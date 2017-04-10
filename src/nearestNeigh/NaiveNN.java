@@ -55,8 +55,7 @@ public class NaiveNN implements NearestNeigh{
                     //If the list is not filled yet, the item is automatically added without checking distance.
 
                     if (nearestPoints.indexOf(nearestPoint) > -1) {
-                        if (point.distTo(searchTerm) < nearestPoint.distTo(searchTerm)) {
-                            System.out.println("");
+                        if (point.distTo(searchTerm) <= nearestPoint.distTo(searchTerm) && point.cat == searchTerm.cat) {
                             nearestPoints.add(nearestPoints.indexOf(nearestPoint), point);
                             nearestPoints.remove(k);
                             break;
@@ -64,6 +63,7 @@ public class NaiveNN implements NearestNeigh{
                         }
                     }
                     else {
+                        System.out.println("Not valid index.");
                     }
 
 
@@ -76,6 +76,7 @@ public class NaiveNN implements NearestNeigh{
         for (Point p : nearestPoints) {
             System.out.println(p.toString());
         }
+        System.out.println();
         return nearestPoints;
     }
 
