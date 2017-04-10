@@ -19,8 +19,6 @@ public class NaiveNN implements NearestNeigh{
 
         Collections.sort(points);
         this.pointsArray = points;
-
-
     }
 
     @Override
@@ -73,51 +71,42 @@ public class NaiveNN implements NearestNeigh{
 
         }
 
-        for (Point p : nearestPoints) {
-            System.out.println(p.toString());
-        }
-        System.out.println();
         return nearestPoints;
-    }
-
-    private void shiftListContentsDownFromIndex(List<Point> list, int i) {
-
-    }
-
-    private int compareDistances(Point destPoint, Point startPoint1, Point startPoint2) {
-        int number;
-
-        double dist1 = startPoint1.distTo(destPoint);
-        double dist2 = startPoint2.distTo(destPoint);
-
-        if (dist1 < dist2) {
-            number = -1;
-        }
-        else if (dist1 > dist2) {
-            number = 1;
-        }
-        else {
-            number = 0;
-        }
-
-        return number;
     }
 
     @Override
     public boolean addPoint(Point point) {
-        // To be implemented.
-        return false;
+
+        if (isPointIn(point)) {
+            return false;
+        }
+
+        this.pointsArray.add(point);
+        Collections.sort(pointsArray);
+
+        return true;
     }
 
     @Override
     public boolean deletePoint(Point point) {
-        // To be implemented.
+
+        for (Point p : pointsArray) {
+            if(point.equals(p)) {
+                this.pointsArray.remove(p);
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
     public boolean isPointIn(Point point) {
-        // To be implemented.
+
+        for (Point p : this.pointsArray) {
+            if (p.equals(point)) {
+                return true;
+            }
+        }
         return false;
     }
 

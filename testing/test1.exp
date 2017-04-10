@@ -8,7 +8,6 @@ Point{id=id300, cat=RESTAURANT, lat=-36.3479032148, lon=145.745617404}
 Point{id=id831, cat=RESTAURANT, lat=-36.3432397838, lon=145.770916586}
 Point{id=id368, cat=RESTAURANT, lat=-36.4441749498, lon=145.011776895}
 Point{id=id735, cat=RESTAURANT, lat=-36.4418929374, lon=144.258137775}
-Delete point failed.
 Point{id=id29, cat=RESTAURANT, lat=-35.7986049109, lon=144.599045548}
 Point{id=id716, cat=RESTAURANT, lat=-36.2008306938, lon=144.586555943}
 Point{id=id657, cat=RESTAURANT, lat=-36.2707913902, lon=144.971396306}
@@ -19,11 +18,8 @@ Point{id=id300, cat=RESTAURANT, lat=-36.3479032148, lon=145.745617404}
 Point{id=id831, cat=RESTAURANT, lat=-36.3432397838, lon=145.770916586}
 Point{id=id368, cat=RESTAURANT, lat=-36.4441749498, lon=145.011776895}
 Point{id=id735, cat=RESTAURANT, lat=-36.4418929374, lon=144.258137775}
-Delete point failed.
 false
+true
 Add point failed.
-false
-Add point failed.
-Delete point failed.
 false
 false
