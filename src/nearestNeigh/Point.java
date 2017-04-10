@@ -8,7 +8,7 @@ import static nearestNeigh.Category.*;
  *
  * @author Jeffrey, Youhan
  */
-public class Point {
+public class Point implements Comparable {
 
     // identifier
     public String id = null;
@@ -21,8 +21,10 @@ public class Point {
 
     /**
      * Empty constructor
+     * @param i
+     * @param i1
      */
-    public Point() {
+    public Point(int i, int i1) {
         this.cat = null;
     }
 
@@ -170,13 +172,26 @@ public class Point {
     }
 
 
-    /**
-     * Convert randian to degrees.
+    /*
+     * Convert radian to degrees.
      * @param deg Radians to convert to degrees.
      * @return Degrees.
      */
+
     private double rad2deg(double rad) {
         return (rad * 180.0 / Math.PI);
     }
 
+    @Override
+    public int compareTo(Object o) {
+        Point point = (Point)o;
+
+        if (this.lat < point.lat) {
+            return -1;
+        }
+        else if (this.lat > point.lat) {
+            return 1;
+        }
+        return 0;
+    }
 } // end of class Point

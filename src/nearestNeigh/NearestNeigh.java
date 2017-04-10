@@ -9,7 +9,8 @@ import java.util.List;
  */
 public interface NearestNeigh {
 
-    /**
+
+    /*
      * construct the data structure to store the nodes
      * @param nodes to be stored
      */

@@ -10,9 +10,11 @@ import java.util.List;
  */
 public class KDTreeNN implements NearestNeigh{
 
+
     @Override
     public void buildIndex(List<Point> points) {
         // To be implemented.
+
     }
 
     @Override
