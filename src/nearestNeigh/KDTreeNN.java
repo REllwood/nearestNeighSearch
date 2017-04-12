@@ -1,6 +1,10 @@
 package nearestNeigh;
 
+import nearestNeigh.KDTree.XYKDTree;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -13,7 +17,9 @@ public class KDTreeNN implements NearestNeigh{
 
     @Override
     public void buildIndex(List<Point> points) {
-        // To be implemented.
+
+        Collections.sort(points);
+        XYKDTree tree = new XYKDTree(points);
 
     }
 

@@ -187,11 +187,20 @@ public class Point implements Comparable {
         Point point = (Point)o;
 
         if (this.lat < point.lat) {
-            return -1;
-        }
-        else if (this.lat > point.lat) {
             return 1;
         }
+        else if (this.lat > point.lat) {
+            return -1;
+        }
+        else {
+            if (this.lon < point.lon) {
+                return 1;
+            }
+            else if(this.lon > point.lon) {
+                return -1;
+            }
+        }
+        // If none of the above conditions match, objects are equal.
         return 0;
     }
 } // end of class Point
