@@ -16,7 +16,8 @@ import java.util.List;
 
 public class KDTreeNN implements NearestNeigh{
 
-    Node root;
+
+    Point root;
 
     @Override
     public void buildIndex(List<Point> points) {
@@ -35,7 +36,13 @@ public class KDTreeNN implements NearestNeigh{
     @Override
     public List<Point> search(Point searchTerm, int k) {
         // To be implemented.
+
+
+
+
         return new ArrayList<Point>();
+
+
 
 
 
@@ -45,11 +52,10 @@ public class KDTreeNN implements NearestNeigh{
     public boolean addPoint(Point point) {
         // To be implemented.
 
-        Node node = new Node(point);
+        Point pointToAdd = new Point();
+
         if (root == null)
-            root = node;
-
-
+            root = pointToAdd;
 
 
         return false;
