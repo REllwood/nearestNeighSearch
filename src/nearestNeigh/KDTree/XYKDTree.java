@@ -17,7 +17,7 @@ public class XYKDTree {
 
     public void addNode(KDNode node) {
 
-        KDNode nodeToAdd = new KDNode();
+        KDNode nodeToAdd = new KDNode(AxisDivider.x, Point.parsePoint("123"));
 
         if (root == null) {
             root = node;
@@ -39,7 +39,7 @@ public class XYKDTree {
     }
 
     private KDNode traverseAndAddNode (KDNode node, KDNode nodeToAdd){
-        if(nodeToAdd.)
+
     }
 
 }
