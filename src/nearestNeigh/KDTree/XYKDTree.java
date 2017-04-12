@@ -17,6 +17,8 @@ public class XYKDTree {
 
     public void addNode(KDNode node) {
 
+        KDNode nodeToAdd = new KDNode();
+
         if (root == null) {
             root = node;
         }
@@ -34,6 +36,10 @@ public class XYKDTree {
     public void printTree() {
 
 
+    }
+
+    private KDNode traverseAndAddNode (KDNode node, KDNode nodeToAdd){
+        if(nodeToAdd.)
     }
 
 }
