@@ -1,5 +1,7 @@
 package nearestNeigh;
 
+import sun.invoke.empty.Empty;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,14 +18,17 @@ public class KDTreeNN implements NearestNeigh{
 
     Node root;
 
-    List<Point> pointsArray = new ArrayList<Point>();
-
     @Override
     public void buildIndex(List<Point> points) {
         // To be implemented.
 
-        Collections.sort(points);
-        this.pointsArray = points;
+        if (points.isEmpty()){
+            return;
+        }
+        else
+        {
+
+        }
 
     }
 
