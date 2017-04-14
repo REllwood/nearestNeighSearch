@@ -14,14 +14,12 @@ import java.util.List;
  */
 public class KDTreeNN implements NearestNeigh{
 
+    XYKDTree tree;
 
     @Override
     public void buildIndex(List<Point> points) {
-
         Collections.sort(points);
-        XYKDTree tree = new XYKDTree(points);
-
-
+        tree = new XYKDTree(points);
     }
 
     @Override

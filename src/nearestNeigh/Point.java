@@ -25,6 +25,8 @@ public class Point implements Comparable {
      * @param i1
      */
     public Point(int i, int i1) {
+        this.lat = i;
+        this.lon = i1;
         this.cat = null;
     }
 
@@ -185,6 +187,10 @@ public class Point implements Comparable {
     @Override
     public int compareTo(Object o) {
         Point point = (Point)o;
+
+        // Return 1 if less than
+        // Return -1 if greater than
+        // Return 0 if equal
 
         if (this.lat < point.lat) {
             return 1;
