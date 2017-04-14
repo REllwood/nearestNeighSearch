@@ -50,7 +50,7 @@ public class KDNode {
         this.right = right;
     }
 
-    private List<Point> getLeftPoints(List<Point> points, int median) {
+    public List<Point> getLeftPoints(List<Point> points, int median) {
         List<Point> leftList = new ArrayList<Point>();
 
         for (int count = 0; count < median; count++) {
@@ -59,7 +59,7 @@ public class KDNode {
         return leftList;
     }
 
-    private List<Point> getRightPoints(List<Point> points, int median) {
+    public List<Point> getRightPoints(List<Point> points, int median) {
         List<Point> rightList = new ArrayList<Point>();
 
         if (median == 1) {
