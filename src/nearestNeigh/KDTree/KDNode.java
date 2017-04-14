@@ -46,7 +46,7 @@ public class KDNode {
         this.left = left;
     }
 
-    private void setRight(KDNode right) {
+    public void setRight(KDNode right) {
         this.right = right;
     }
 
