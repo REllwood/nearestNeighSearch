@@ -17,7 +17,7 @@ public class NaiveNN implements NearestNeigh{
     @Override
     public void buildIndex(List<Point> points) {
 
-        Collections.sort(points);
+        Collections.sort(points, new PointXComparator());
         this.pointsArray = points;
     }
 
@@ -34,7 +34,7 @@ public class NaiveNN implements NearestNeigh{
                 /** Will only add a point if its distance to the searchTerm is less than the distance from the point inside
                  * the nearestPoints list to the searchTerm.
                  */
-                Collections.sort(nearestPoints, new Comparator<Point>() {
+                Collections.sort(nearestPoints, new PointXComparator() {
                     @Override
                     public int compare(Point o1, Point o2) {
 
@@ -82,7 +82,7 @@ public class NaiveNN implements NearestNeigh{
         }
 
         this.pointsArray.add(point);
-        Collections.sort(pointsArray);
+        Collections.sort(pointsArray, new PointXComparator());
 
         return true;
     }

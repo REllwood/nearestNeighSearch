@@ -8,7 +8,7 @@ import static nearestNeigh.Category.*;
  *
  * @author Jeffrey, Youhan
  */
-public class Point implements Comparable {
+public class Point {
 
     // identifier
     public String id = null;
@@ -184,29 +184,4 @@ public class Point implements Comparable {
         return (rad * 180.0 / Math.PI);
     }
 
-    @Override
-    public int compareTo(Object o) {
-        Point point = (Point)o;
-
-        // Return 1 if less than
-        // Return -1 if greater than
-        // Return 0 if equal
-
-        if (this.lat < point.lat) {
-            return 1;
-        }
-        else if (this.lat > point.lat) {
-            return -1;
-        }
-        else {
-            if (this.lon < point.lon) {
-                return 1;
-            }
-            else if(this.lon > point.lon) {
-                return -1;
-            }
-        }
-        // If none of the above conditions match, objects are equal.
-        return 0;
-    }
 } // end of class Point

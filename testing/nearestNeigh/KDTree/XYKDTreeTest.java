@@ -1,8 +1,6 @@
 package nearestNeigh.KDTree;
 
-import nearestNeigh.Category;
-import nearestNeigh.KDTreeNN;
-import nearestNeigh.Point;
+import nearestNeigh.*;
 import org.junit.Test;
 
 import java.io.File;
@@ -34,25 +32,50 @@ public class XYKDTreeTest {
             Point point = new Point(id, cat, scanner.nextDouble(), scanner.nextDouble());
             points.add(point);
         }
-        Collections.sort(points);
+        Collections.sort(points, new PointXComparator());
         scanner.close();
 
         return points;
     }
 
     @Test
-    private void test() {
+    public void test() {
+
+
+        Collections.sort(points, new PointXComparator());
+        for (Point point : points) {
+            System.out.println(point);
+        }
+        System.out.println();
+        Collections.sort(points, new PointYComparator());
+        for (Point point : points) {
+            System.out.println(point);
+        }
+
+        System.out.println();
 
         XYKDTree tree = new XYKDTree(points);
 
-        KDNode node = tree.getRoot();
-        System.out.println(node.toString());
-        node = node.getLeft();
-        System.out.println(node.toString());
-        node = node.getLeft();
-        System.out.println(node.toString());
-        node = node.getRight();
-        System.out.println(node.toString());
+        KDNode root = tree.getRoot();
+        System.out.println(root.toString());
+        System.out.println(root.getLeft().toString());
+        System.out.println(root.getLeft().getLeft().toString());
+        System.out.println(root.getLeft().getLeft().getRight().toString());
+        System.out.println();
+        System.out.println(tree.nearestPoint(new Point("", Category.EDUCATION, -38.00, 146.00)));
+
+
     }
 
+    public void testFunction(int number) {
+
+        number = number + 5;
+        System.out.println(number);
+
+    }
+
+    @Test
+    public void functionTest() {
+        System.out.println(3/2);
+    }
 }

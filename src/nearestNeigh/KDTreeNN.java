@@ -18,7 +18,7 @@ public class KDTreeNN implements NearestNeigh{
 
     @Override
     public void buildIndex(List<Point> points) {
-        Collections.sort(points);
+        Collections.sort(points, new PointXComparator());
         tree = new XYKDTree(points);
     }
 
@@ -45,5 +45,7 @@ public class KDTreeNN implements NearestNeigh{
         // To be implemented.
         return false;
     }
+
+
 
 }
