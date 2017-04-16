@@ -2,11 +2,12 @@ package nearestNeigh;
 
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static org.junit.Assert.*;
+import java.util.Scanner;
 
 /**
  * Created by campbellbrobbel on 10/4/17.
@@ -16,16 +17,18 @@ public class NaiveNNTest {
     public NaiveNN naive = new NaiveNN();
 
     @Test
-    public void buildIndex() {
+    public List<Point> buildIndex() {
         List<Point> points = new ArrayList<Point>();
-        Point point = new Point("da", Category.EDUCATION, 1, 1);
+
+        /*Point point = new Point("da", Category.EDUCATION, 1, 1);
         Point point2 = new Point("ad", Category.EDUCATION, 2, 1);
         Point point3 = new Point("fd", Category.EDUCATION, 3, 1);
         Point point4 = new Point("gh", Category.EDUCATION, 4, 1);
         points.add(point3);
         points.add(point4);
         points.add(point);
-        points.add(point2);
+        points.add(point2);*/
+
 
         Collections.sort(points, new PointXComparator());
 
@@ -54,6 +57,22 @@ public class NaiveNNTest {
         for (Point tempPoint : points) {
             System.out.println(tempPoint.toString());
         }
+        return null;
 
+    }
+    private List<Point> initPoints() throws FileNotFoundException {
+        List<Point> points = new ArrayList<Point>();
+        File dataFile = new File("src/test 100000");
+        Scanner scanner = new Scanner(dataFile);
+        while (scanner.hasNext()) {
+            String id = scanner.next();
+            Category cat = Point.parseCat(scanner.next());
+            Point point = new Point(id, cat, scanner.nextDouble(), scanner.nextDouble());
+            points.add(point);
+        }
+        Collections.sort(points, new PointXComparator());
+        scanner.close();
+
+        return points;
     }
 }
