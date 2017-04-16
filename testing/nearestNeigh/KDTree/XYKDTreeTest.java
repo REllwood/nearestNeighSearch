@@ -13,7 +13,7 @@ import java.util.Scanner;
 import static org.junit.Assert.*;
 
 /**
- * Created by rhysellwood on 12/4/17.
+ * Created by campbellbrobbel on 12/4/17.
  */
 public class XYKDTreeTest {
 
@@ -24,7 +24,7 @@ public class XYKDTreeTest {
 
     private List<Point> initPoints() throws FileNotFoundException {
         List<Point> points = new ArrayList<Point>();
-        File dataFile = new File("src/test 10000");
+        File dataFile = new File("src/sampleData2.txt");
         Scanner scanner = new Scanner(dataFile);
         while (scanner.hasNext()) {
             String id = scanner.next();
@@ -52,19 +52,12 @@ public class XYKDTreeTest {
 //            System.out.println(point);
 //        }
 
-        for (Point point : points) {
-            System.out.println(point);
-        }
-        System.out.println();
+
         XYKDTree tree = new XYKDTree(points);
 
         KDNode root = tree.getRoot();
-        System.out.println(root.toString());
-        System.out.println(root.getLeft().toString());
-        System.out.println(root.getLeft().getLeft().toString());
-        System.out.println(root.getLeft().getLeft().getRight().toString());
 
-
+        tree.kNearestNeighbours(points.get(0), 10);
     }
 
     public void testFunction(int number) {
