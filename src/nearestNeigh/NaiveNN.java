@@ -14,6 +14,8 @@ public class NaiveNN implements NearestNeigh{
 
     List<Point> pointsArray = new ArrayList<Point>();
 
+
+
     @Override
     public void buildIndex(List<Point> points) {
 
@@ -66,8 +68,6 @@ public class NaiveNN implements NearestNeigh{
                     else {
                         System.out.println("Not valid index.");
                     }
-
-
                 }
 
             }

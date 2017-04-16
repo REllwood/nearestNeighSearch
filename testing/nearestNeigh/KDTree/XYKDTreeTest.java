@@ -65,12 +65,11 @@ public class XYKDTreeTest {
 
         for (Point searchPoint : searchPoints) {
 
-            List<Point> nearestPoints = tree.kNearestNeighbours(searchPoint, 1);
+            List<Point> nearestPoints = tree.kNearestNeighbours(searchPoint, 10);
 
             for (Point p : nearestPoints) {
                 System.out.println(p.toString());
             }
-
         }
     }
 
