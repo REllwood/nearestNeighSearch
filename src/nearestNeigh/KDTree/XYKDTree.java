@@ -107,7 +107,7 @@ public class XYKDTree {
         }
 
 
-        return false;
+        return root;
     }
 
     public KDNode searchForNodeBy(Point nodePoint) {
