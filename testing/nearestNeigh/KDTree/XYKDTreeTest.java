@@ -13,7 +13,7 @@ import java.util.Scanner;
 import static org.junit.Assert.*;
 
 /**
- * Created by campbellbrobbel on 12/4/17.
+ * Created by rhysellwood on 12/4/17.
  */
 public class XYKDTreeTest {
 
@@ -24,7 +24,7 @@ public class XYKDTreeTest {
 
     private List<Point> initPoints() throws FileNotFoundException {
         List<Point> points = new ArrayList<Point>();
-        File dataFile = new File("src/sampleData2.txt");
+        File dataFile = new File("src/test 10000");
         Scanner scanner = new Scanner(dataFile);
         while (scanner.hasNext()) {
             String id = scanner.next();
@@ -63,6 +63,7 @@ public class XYKDTreeTest {
         System.out.println(root.getLeft().toString());
         System.out.println(root.getLeft().getLeft().toString());
         System.out.println(root.getLeft().getLeft().getRight().toString());
+
 
     }
 
