@@ -42,18 +42,20 @@ public class XYKDTreeTest {
     public void test() {
 
 
-        Collections.sort(points, new PointXComparator());
+//        Collections.sort(points, new PointXComparator());
+//        for (Point point : points) {
+//            System.out.println(point);
+//        }
+//        System.out.println();
+//        Collections.sort(points, new PointYComparator());
+//        for (Point point : points) {
+//            System.out.println(point);
+//        }
+
         for (Point point : points) {
             System.out.println(point);
         }
         System.out.println();
-        Collections.sort(points, new PointYComparator());
-        for (Point point : points) {
-            System.out.println(point);
-        }
-
-        System.out.println();
-
         XYKDTree tree = new XYKDTree(points);
 
         KDNode root = tree.getRoot();
@@ -61,9 +63,6 @@ public class XYKDTreeTest {
         System.out.println(root.getLeft().toString());
         System.out.println(root.getLeft().getLeft().toString());
         System.out.println(root.getLeft().getLeft().getRight().toString());
-        System.out.println();
-        System.out.println(tree.nearestPoint(new Point("", Category.EDUCATION, -38.00, 146.00)));
-
 
     }
 

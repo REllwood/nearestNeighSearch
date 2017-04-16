@@ -1,5 +1,6 @@
 package nearestNeigh.KDTree;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
 import nearestNeigh.Point;
 import nearestNeigh.PointXComparator;
 import nearestNeigh.PointYComparator;
@@ -42,6 +43,203 @@ public class XYKDTree {
         return nearestPoints;
     }
 
+    public KDNode deleteNodeWith(KDNode root, Point point) {
+
+        /*
+        1) If current node contains the point to be deleted
+
+            a. If node to be deleted is a leaf node, simply delete it (Same as BST Delete)
+            b. If node to be deleted has right child as not NULL (Different from BST)
+                    - Find minimum of current node’s dimension in right subtree.
+                    - Replace the node with above found minimum and recursively delete minimum in right subtree.
+            c. Else node to be deleted has left child as not NULL (Different from BST)
+                    - Find minimum of current node’s dimension in left subtree.
+                    - Replace the node with above found minimum and recursively delete minimum in left subtree.
+                    - Make new left subtree as right child of current node.
+
+        2) If current doesn’t contain the point to be deleted
+            a. If node to be deleted is smaller than current node on current dimension, recur for left subtree.
+            b. Else recur for right subtree.
+
+        */
+
+        KDNode nodeToDelete = searchForNodeBy(point);
+
+        if (nodeToDelete == null) {
+            System.out.println("Point does not exist");
+            return null;
+        }
+
+        AxisDivider axis = nodeToDelete.getAxis();
+
+        if (root.getPoint().equals(nodeToDelete.getPoint())) {
+            if (nodeToDelete.isLeaf()) {
+                nodeToDelete = null;
+                return null;
+            }
+            if (nodeToDelete.hasRightChild()) {
+                KDNode minRightChild = nodeToDelete.getRight();
+                if (minRightChild.getLeft() != null) {
+                    while (minRightChild.getLeft().getLeft() != null) {
+                        if (minRightChild.getLeft() != null) {
+                            minRightChild = minRightChild.getLeft().getLeft();
+                        }
+                    }
+                    nodeToDelete.setPoint(minRightChild.getPoint());
+
+                    root.setRight(deleteNodeWith(root.getRight(), minRightChild.getPoint()));
+                    //deleteNodeContaining(nodeToDelete.getPoint());
+                }
+            }
+            else {
+                KDNode minLeftChild = nodeToDelete.getLeft();
+                if (minLeftChild.getLeft() != null) {
+                    while (minLeftChild.getLeft().getLeft() != null) {
+                        if (minLeftChild.getLeft() != null) {
+                            minLeftChild = minLeftChild.getLeft().getLeft();
+                        }
+                    }
+                    nodeToDelete.setPoint(minLeftChild.getPoint());
+                    deleteNodeContaining(nodeToDelete.getPoint());
+                }
+
+            }
+        }
+
+
+        return false;
+    }
+
+    public KDNode searchForNodeBy(Point nodePoint) {
+
+        KDNode resultNode = this.root;
+        boolean match = false;
+        while (match == false) {
+            if (resultNode != null) {
+                if (resultNode.getPoint().equals(nodePoint)) {
+                    System.out.println("True");
+                    match = true;
+                }
+                else if (resultNode.getAxis() == AxisDivider.x) {
+                    if (nodePoint.lat > resultNode.getPoint().lat) {
+                        resultNode = resultNode.getRight();
+                    }
+                    else {
+                        resultNode = resultNode.getLeft();
+
+                    }
+                }
+                else {
+                    if (nodePoint.lon > resultNode.getPoint().lon) {
+                        resultNode = resultNode.getRight();
+                    }
+                    else {
+                        resultNode = resultNode.getLeft();
+                    }
+                }
+            }
+            else {
+                match = true;
+            }
+        }
+        return resultNode;
+    }
+    private boolean deleteNodeContaining(Point nodePoint) {
+
+        KDNode resultNode = this.root;
+        boolean match = false;
+        while (!(resultNode.getLeft().getPoint().equals(nodePoint)) || !(resultNode.getLeft().getPoint().equals(nodePoint))) {
+            if (resultNode != null) {
+                if (resultNode.getPoint().equals(nodePoint)) {
+                    System.out.println("True");
+                    match = true;
+                }
+                else if (resultNode.getAxis() == AxisDivider.x) {
+                    if (nodePoint.lat > resultNode.getPoint().lat) {
+                        resultNode = resultNode.getRight();
+                    }
+                    else {
+                        resultNode = resultNode.getLeft();
+                    }
+                }
+                else {
+                    if (nodePoint.lon > resultNode.getPoint().lon) {
+                        resultNode = resultNode.getRight();
+                    }
+                    else {
+                        resultNode = resultNode.getLeft();
+                    }
+                }
+            }
+            else {
+                return false;
+            }
+
+        }
+
+        if (resultNode.getLeft().getPoint().equals(nodePoint)) {
+            resultNode.setLeft(null);
+            return true;
+        }
+
+        resultNode.setRight(null);
+        return true;
+    }
+    private boolean DeleteNodeContaining(Point nodePoint) {
+
+        boolean match = false;
+        KDNode nodeToDelete = this.root;
+
+
+//        while (nodeToDelete != null) {
+//                if (nodeToDelete.getAxis() == AxisDivider.x) {
+//                    if (nodePoint.lat > nodeToDelete.getPoint().lat) {
+//                        if (nodeToDelete.getRight().getPoint().equals(nodePoint)) {
+//                            nodeToDelete.setRight(null);
+//                            System.out.println("Successfully Deleted Point" + nodePoint.toString());
+//                            return true;
+//                        }
+//                        else {
+//                            nodeToDelete = nodeToDelete.getRight();
+//                        }
+//                    }
+//                    else {
+//                        if (nodeToDelete.getLeft().getPoint().equals(nodePoint)) {
+//                            nodeToDelete.setLeft(null);
+//                            System.out.println("Successfully Deleted Point" + nodePoint.toString());
+//                            return true;
+//                        }
+//                        else {
+//                            nodeToDelete = nodeToDelete.getLeft();
+//                        }
+//                    }
+//                }
+//                else {
+//                    if (nodePoint.lon > nodeToDelete.getPoint().lon) {
+//                        if (nodeToDelete.getRight().getPoint().equals(nodePoint)) {
+//                            nodeToDelete.setRight(null);
+//                            System.out.println("Successfully Deleted Point" + nodePoint.toString());
+//                            return true;
+//                        }
+//                        else {
+//                            nodeToDelete = nodeToDelete.getRight();
+//                        }
+//                    }
+//                    else {
+//                        if (nodeToDelete.getLeft().getPoint().equals(nodePoint)) {
+//                            nodeToDelete.setLeft(null);
+//                            System.out.println("Successfully Deleted Point" + nodePoint.toString());
+//                            return true;
+//                        }
+//                        else {
+//                            nodeToDelete = nodeToDelete.getLeft();
+//                        }
+//                    }
+//                }
+//
+//        }
+        return false;
+    }
 
     public Point nearestPoint(Point searchPoint) {
         KDNode searchParentNode = parentNodeFor(searchPoint);
@@ -248,6 +446,55 @@ public class XYKDTree {
 
     public KDNode getRoot() {
         return root;
+    }
+
+    public KDNode findMinimumNodeFor(KDNode root, AxisDivider axis) {
+
+        if (root == null) {
+            return null;
+        }
+        AxisDivider newAxis = axis;
+
+        if (root.getAxis() == newAxis) {
+            if (root.getLeft() == null) {
+                return root;
+            }
+            if (axis == AxisDivider.x) {
+                newAxis = AxisDivider.y;
+            }
+            else {
+                newAxis = AxisDivider.x;
+
+            }
+            return findMinimumNodeFor(root.getLeft(), newAxis);
+        }
+
+
+        return findMinNode(root.getLeft(), findMinimumNodeFor(root.getLeft(), newAxis),
+                findMinimumNodeFor(root.getRight(), newAxis), axis);
+    }
+
+    public KDNode findMinNode(KDNode x, KDNode y, KDNode z, AxisDivider axis) {
+
+        KDNode result = x;
+
+            if (axis == AxisDivider.x) {
+                if (y != null && y.getPoint().lat < result.getPoint().lat){
+                    result = y;
+                }
+                if (z != null && z.getPoint().lat < result.getPoint().lat){
+                    result = z;
+                }
+            }
+            else {
+                if (y != null && y.getPoint().lon < result.getPoint().lon){
+                    result = y;
+                }
+                if (z != null && z.getPoint().lon < result.getPoint().lon){
+                    result = z;
+                }
+            }
+        return result;
     }
 
     private AxisDivider getAxis(boolean bxDim) {

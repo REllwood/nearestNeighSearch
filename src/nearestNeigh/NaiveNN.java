@@ -27,6 +27,9 @@ public class NaiveNN implements NearestNeigh{
         List<Point> nearestPoints = new ArrayList<Point>();
 
         for (Point point : this.pointsArray) {
+            if (k >=  this.pointsArray.size()) {
+
+            }
             if(nearestPoints.size() < k) {
                 nearestPoints.add(point);
             }

@@ -42,6 +42,9 @@ public class KDNode {
         return point;
     }
 
+    public void setPoint(Point point) {
+        this.point = point;
+    }
     public void setLeft(KDNode left) {
         this.left = left;
     }
@@ -73,4 +76,20 @@ public class KDNode {
 
         return rightList;
     }
+
+    public boolean isLeaf() {
+        if (this.left == null && this.right == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasRightChild() {
+        if (this.getRight() != null) {
+            return true;
+        }
+        return false;
+    }
+
+
 }
