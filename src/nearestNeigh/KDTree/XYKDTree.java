@@ -45,7 +45,6 @@ public class XYKDTree {
                 Point nearestPoint = nearestPoint(searchPoint);
                 nearestPoints.add(nearestPoint);
                 //Delete nodeContaining Nearest Points from tree.
-                System.out.println(nearestPoint.toString());
                 count++;
             }
         }
