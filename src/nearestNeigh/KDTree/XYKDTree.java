@@ -55,24 +55,6 @@ public class XYKDTree {
 
     public KDNode deleteNodeWith(KDNode root, Point point) {
 
-        /*
-        1) If current node contains the point to be deleted
-
-            a. If node to be deleted is a leaf node, simply delete it (Same as BST Delete)
-            b. If node to be deleted has right child as not NULL (Different from BST)
-                    - Find minimum of current node’s dimension in right subtree.
-                    - Replace the node with above found minimum and recursively delete minimum in right subtree.
-            c. Else node to be deleted has left child as not NULL (Different from BST)
-                    - Find minimum of current node’s dimension in left subtree.
-                    - Replace the node with above found minimum and recursively delete minimum in left subtree.
-                    - Make new left subtree as right child of current node.
-
-        2) If current doesn’t contain the point to be deleted
-            a. If node to be deleted is smaller than current node on current dimension, recur for left subtree.
-            b. Else recur for right subtree.
-
-        */
-
         KDNode nodeToDelete = searchForNodeBy(point);
 
         if (nodeToDelete == null) {
